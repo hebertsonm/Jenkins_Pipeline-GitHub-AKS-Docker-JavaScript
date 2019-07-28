@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bbycasre
+spec:
+  template:
+    metadata:
+      labels:
+        app: bbycasre
+    spec:
+      containers:
+      - image: hebertsonm/node-bbycasre:1.0.0
+        name: bbycasre
+        envFrom:
+          - configMapRef:
+              name: env-configmap
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bbycasre
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: bbycasre
+  type: ClusterIP

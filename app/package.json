@@ -1,0 +1,9 @@
+{
+	"name": "bbuycasre",
+	"version": "1.0.0",
+	"dependencies": {
+		"express": "^4.16.0",
+		"ejs": "^2.6.0",
+		"path": "^0.12.0"
+	}
+}

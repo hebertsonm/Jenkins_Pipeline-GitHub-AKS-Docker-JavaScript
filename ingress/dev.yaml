@@ -1,0 +1,16 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bbycasre
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: bbycasre-dev.b297290a740d41dd8c70.eastus.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: bbycasre
+          servicePort: 8000
+        path: /
